@@ -101,8 +101,8 @@ export const SurveyPage: React.FC<SurveyPageProps> = ({ demographics, onComplete
                 以下は架空のアパレルブランド「TORIA」のロゴ案です。
               </p>
               <p className="mt-3 text-gray-600 text-sm sm:text-base leading-relaxed text-pretty break-words">
-                各ロゴを見て、初見の印象を7段階で評価してください。数値が高いほど好印象）<br/>
-                ロゴは全部で30点あります。すべてのロゴを評価してから送信してください。
+                各ロゴを見て、初見の印象（好きかどうか）を7段階で評価してください。<br/>
+                ロゴ案は全部で30点あります。すべてのロゴを評価してから送信してください。<br/>（所要時間　約3分）
               </p>
             </div>
           </div>
