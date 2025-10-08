@@ -41,7 +41,6 @@ export const LogoCard: React.FC<LogoCardProps> = ({
         )}
 
         <div className="flex flex-col items-center space-y-2">
-          <p className="text-sm text-gray-600">このロゴを評価してください</p>
 
           {/* モバイル用（~sm） */}
           <div className="w-full sm:hidden">
