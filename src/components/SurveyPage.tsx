@@ -96,7 +96,7 @@ export const SurveyPage: React.FC<SurveyPageProps> = ({ demographics, onComplete
               ロゴの印象に関するアンケート
             </h1>
 
-            <div className="mx-auto max-w-[24rem] sm:max-w-[40rem]">
+            <div className="mx-auto px-4 max-w-[22rem] sm:max-w-[40rem]">
               <p className="text-gray-600 text-sm sm:text-base leading-relaxed text-pretty break-keep">
                 以下は架空のアパレルブランド「TORIA」のロゴ案です。
               </p>
