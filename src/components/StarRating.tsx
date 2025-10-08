@@ -14,7 +14,6 @@ export const StarRating: React.FC<StarRatingProps> = ({
   onRatingChange, 
   size = 'md',
   readonly = false,
-  max = 7                         // ★ の総数を指定
 }) => {
   const sizeClasses = {
     sm: 'w-4 h-4',
@@ -23,15 +22,15 @@ export const StarRating: React.FC<StarRatingProps> = ({
   };
 
   return (
-    <div className="flex gap-1">
-      {Array.from({ length: max }, (_, i) => i + 1).map((star) => (
+    <div className="flex w-full justify-center gap-0.5 sm:gap-1">
+      {[1,2,3,4,5,6,7].map((star) => (
         <button
           key={star}
           type="button"
           disabled={readonly}
           onClick={() => !readonly && onRatingChange(star)}
-          className={`${sizeClasses[size]} transition-transform ${
-            readonly ? 'cursor-default' : 'cursor-pointer hover:scale-110'
+          className={`${sizeClasses[size]} transition-transform shrink-0 ${
+            readonly ? 'cursor-default' : 'cursor-pointer sm:hover:scale-110'
           }`}
         >
           <Star

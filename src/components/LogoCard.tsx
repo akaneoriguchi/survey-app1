@@ -41,7 +41,18 @@ export const LogoCard: React.FC<LogoCardProps> = ({
         )}
 
         <div className="flex flex-col items-center space-y-2">
-          <StarRating rating={rating} onRatingChange={onRatingChange} size="md" />
+          <p className="text-sm text-gray-600">このロゴを評価してください</p>
+
+          {/* モバイル用（~sm） */}
+          <div className="w-full sm:hidden">
+            <StarRating rating={rating} onRatingChange={onRatingChange} size="sm" />
+          </div>
+
+          {/* タブレット以上（sm~） */}
+          <div className="hidden sm:block w-full">
+            <StarRating rating={rating} onRatingChange={onRatingChange} size="md" />
+          </div>
+
           <p className="text-xs text-gray-500">
             {rating > 0 ? `${rating}/7` : '未評価'}
           </p>
