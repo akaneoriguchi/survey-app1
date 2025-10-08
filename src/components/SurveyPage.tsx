@@ -91,17 +91,23 @@ export const SurveyPage: React.FC<SurveyPageProps> = ({ demographics, onComplete
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8">
       <div className="max-w-7xl mx-auto px-4">
         {/* ヘッダー */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">
-            ロゴの印象に関するアンケート
-          </h1>
-          <p className="text-lg text-gray-600 mb-6">
-            以下は架空のアパレルブランド「TORIA」のロゴ案です。<br />
-            各ロゴを見て、初見の印象を7段階で評価してください。<br />
-            （数値が高いほど好印象）<br /><br />
-            ロゴは全部で30点あります。すべてのロゴを評価してから送信してください。
-          </p>
-        </div>
+          <div className="text-center mb-8">
+            <h1 className="text-4xl sm:text-5xl font-bold text-gray-800 mb-4 text-pretty">
+              ロゴの印象に関するアンケート
+            </h1>
+
+            <div className="mx-auto max-w-[24rem] sm:max-w-[40rem]">
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed text-pretty break-keep">
+                以下は架空のアパレルブランド「TORIA」のロゴ案です。
+              </p>
+              <p className="mt-3 text-gray-600 text-sm sm:text-base leading-relaxed text-pretty break-keep">
+                各ロゴを見て、初見の印象を7段階で評価してください（数値が高いほど好印象）。
+              </p>
+              <p className="mt-3 text-gray-600 text-sm sm:text-base leading-relaxed text-pretty break-keep">
+                ロゴは全部で30点あります。すべてのロゴを評価してから送信してください。
+              </p>
+            </div>
+          </div>
 
         {/* ロゴカード一覧 */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4 mb-8">
