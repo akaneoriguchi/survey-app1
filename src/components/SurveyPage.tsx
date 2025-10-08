@@ -88,12 +88,15 @@ export const SurveyPage: React.FC<SurveyPageProps> = ({ demographics, onComplete
             ロゴの印象に関するアンケート
           </h1>
           <p className="text-lg text-gray-600 mb-6">
-            以下のロゴを見て、初見の印象を7段階で評価してください。
+            以下は架空のアパレルブランド「TORIA」のロゴ案です。<br />
+            各ロゴを見て、初見の印象を7段階で評価してください。<br />
+            （数値が高いほど好印象）<br /><br />
+            ロゴは全部で30点あります。すべてのロゴを評価してから送信してください。
           </p>
         </div>
 
         {/* ロゴカード一覧 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-5 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4 mb-8">
           {logos.map((logo, index) => (
             <LogoCard
               key={logo.id}
