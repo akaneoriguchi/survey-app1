@@ -40,54 +40,52 @@ export const SurveyPage: React.FC<SurveyPageProps> = ({ demographics, onComplete
   };
 
   const handleSubmit = async () => {
-    const ratedLogos = Object.keys(ratings).filter(id => ratings[id] > 0);
-    if (ratedLogos.length !== totalLogos) {
-      alert(`すべてのロゴ（${totalLogos}件）を評価してください。`);
-      return;
-    }
+  const ratedLogos = Object.keys(ratings).filter(id => ratings[id] > 0);
+  if (ratedLogos.length !== totalLogos) {
+    alert(`すべてのロゴ（${totalLogos}件）を評価してください。`);
+    return;
+  }
 
-    const url = import.meta.env.VITE_WEBHOOK_URL as string | undefined;
-    if (!url) {
-      alert('送信先URLが未設定です。');
-      return;
-    }
+  const url = import.meta.env.VITE_WEBHOOK_URL as string | undefined;
+  if (!url) {
+    alert('送信先URLが未設定です。');
+    return;
+  }
 
-          // ここでログを出す（送信直前）
-      console.log('Webhook URL (prod):', url);
-      console.log('Payload:', {
-        name: demographics.name,
-        gender: demographics.gender,
-        age: demographics.age,
-        ratings, // or ratedLogos.map(...) でもOK
-        timestamp: new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' }),
-      });
+  setIsSubmitting(true);
 
-    setIsSubmitting(true);
+  // 配列で送る（GAS側が扱いやすい形）
+  const ratingsArray = ratedLogos.map((logoId) => ({
+    logoId: String(logoId).trim(),
+    rating: Number(ratings[logoId]),
+  }));
 
-    const payload = {
-          name: demographics.name,
-          gender: demographics.gender,
-          age: demographics.age,
-          ratings: ratedLogos.map((logoId) => ({
-            logoId,
-            rating: ratings[logoId],
-          })),
-        };
-
-    try {
-      await fetch(url, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      onComplete();
-    } catch {
-      alert('送信に失敗しました。');
-    } finally {
-      setIsSubmitting(false);
-    }
+  const payload = {
+    name: demographics.name,
+    gender: demographics.gender,
+    age: demographics.age,
+    timestamp: new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' }),
+    ratings: ratingsArray,
   };
+
+  // ← ここでログ（payload作成後に）
+  console.log('Webhook URL (prod):', url);
+  console.log('Payload:', payload);
+
+  try {
+    await fetch(url, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    onComplete();
+  } catch {
+    alert('送信に失敗しました。');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8">
