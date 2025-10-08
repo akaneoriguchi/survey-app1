@@ -88,7 +88,7 @@ export const SurveyPage: React.FC<SurveyPageProps> = ({ demographics, onComplete
 };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4">
         {/* ヘッダー */}
           <div className="text-center mb-8">
@@ -101,8 +101,8 @@ export const SurveyPage: React.FC<SurveyPageProps> = ({ demographics, onComplete
                 以下は架空のアパレルブランド「TORIA」のロゴ案です。
               </p>
               <p className="mt-3 text-gray-600 text-sm sm:text-base leading-relaxed text-pretty break-keep">
-                各ロゴを見て、初見の印象を7段階で評価してください。<br />（数値が高いほど好印象）<br />
-                ロゴは全部で30点あります。<br />すべてのロゴを評価してから送信してください。
+                各ロゴを見て、初見の印象を7段階で評価してください。数値が高いほど好印象）<br/>
+                ロゴは全部で30点あります。すべてのロゴを評価してから送信してください。
               </p>
             </div>
           </div>
