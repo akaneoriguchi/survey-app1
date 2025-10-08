@@ -52,6 +52,16 @@ export const SurveyPage: React.FC<SurveyPageProps> = ({ demographics, onComplete
       return;
     }
 
+          // ここでログを出す（送信直前）
+      console.log('Webhook URL (prod):', url);
+      console.log('Payload:', {
+        name: demographics.name,
+        gender: demographics.gender,
+        age: demographics.age,
+        ratings, // or ratedLogos.map(...) でもOK
+        timestamp: new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' }),
+      });
+
     setIsSubmitting(true);
 
     const payload = {
