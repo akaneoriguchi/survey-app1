@@ -55,11 +55,14 @@ export const SurveyPage: React.FC<SurveyPageProps> = ({ demographics, onComplete
     setIsSubmitting(true);
 
     const payload = {
-      timestamp: new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' }),
-      gender: demographics.gender,
-      age: demographics.age,
-      ratings: ratedLogos.map(logoId => ({ logoId, rating: ratings[logoId] }))
-    };
+          name: demographics.name,
+          gender: demographics.gender,
+          age: demographics.age,
+          ratings: ratedLogos.map((logoId) => ({
+            logoId,
+            rating: ratings[logoId],
+          })),
+        };
 
     try {
       await fetch(url, {
