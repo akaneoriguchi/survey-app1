@@ -130,6 +130,9 @@ export const SurveyPage: React.FC<SurveyPageProps> = ({ demographics, onComplete
           >
             {isSubmitting ? '送信中...' : 'アンケートを送信'}
           </button>
+            <p className="text-center text-sm text-red-500 mt-3">
+              すべてに回答すると送信できます。送信後、完了画面が表示されるまで少々お待ち下さい。
+            </p>
         </div>
       </div>
     </div>
